@@ -1,0 +1,32 @@
+﻿@model Gobi.Tests.Jr.WebApp.ViewModels.TodoViewModel
+
+@{
+	ViewData["Title"] = "Update Todo Item";
+	Layout = null;
+}
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="update-todo-modal-label">Add ToDo</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+			<form asp-action="Update" method="post" id="Updateform">
+				@Html.HiddenFor(model => model.NewTodoItem.Id)
+				<div class="mb-3">
+					@Html.LabelFor(model => model.NewTodoItem.Description)
+					@Html.EditorFor(model => model.NewTodoItem.Description, new { htmlAttributes = new{@class="form-control"}})
+				</div>
+
+				<div class="form-check mb-3">
+					@Html.LabelFor(model => model.NewTodoItem.Completed)
+					@Html.CheckBoxFor(model=>model.NewTodoItem.Completed, new {htmlAttributes = new {@class="form-control"}})
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+			<button type="submit" form="Updateform" value="submit" class="btn btn-primary">Save</button>
+		</div>
+	</div>
+</div>
